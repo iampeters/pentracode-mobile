@@ -139,9 +139,18 @@ android {
 dependencies {
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-spinkit')
+    // implementation project(':react-native-maps')
+    compile(project(':react-native-maps')) {
+      exclude group: 'com.android.support'
+      exclude module: 'appcompat-v7'
+      exclude module: 'support-v4'
+    }
     implementation project(':appcenter-crashes')
     implementation project(':appcenter-analytics')
     implementation project(':appcenter')
+    implementation project(':react-native-vector-icons')
+    implementation project(':react-native-spinkit')
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules

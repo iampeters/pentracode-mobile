@@ -1,51 +1,40 @@
-
 import React, {Component} from 'react';
-// Use prebuilt version of RNVI in dist folder
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
-
-// Generate required css
-import iconFont from 'react-native-vector-icons/Fonts/FontAwesome.ttf';
-const iconFontStyles = `@font-face {
-  src: url(${iconFont});
-  font-family: FontAwesome;
-}`;
+const firebase = require('firebase')
+// import styles from "./src/utils/styles";
+import { createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
+import Main from "./src/pages/Main";
+import Register from './src/pages/Register';
+import Login from './src/pages/Login';
 
 // import { Fonts } from './src/utils/Fonts';
 
 import {
   Platform,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
   ActivityIndicator,
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableNativeFeedback,
-  Image,
-  Alert
+  StatusBar
 } from 'react-native';
 
 export default class App extends Component {
+ 
+
+  componentWillMount() {
+    const firebaseConfig = {
+      apiKey: 'AIzaSyDbWrImDclPv2fnGd1_R4t3ge1gYhwqr7I',
+      authDomain: 'pentracode-2018.firebaseapp.com'
+    }
+
+    firebase.initializeApp(firebaseConfig);
+  }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Hello, Peters</Text>
-      </View>
-
+      <AppNavigator />
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f7f7f7',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontFamily: 'product_sans',
-
-  },
-
-});
+const AppNavigator = createStackNavigator({
+  Main: { screen: Main },
+  Login: { screen: Login },
+  Register: { screen: Register}
+})
