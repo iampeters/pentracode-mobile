@@ -19,8 +19,8 @@ export default class App extends Component {
 
   componentWillMount() {
     const firebaseConfig = {
-      apiKey: 'AIzaSyDbWrImDclPv2fnGd1_R4t3ge1gYhwqr7I',
-      authDomain: 'pentracode-2018.firebaseapp.com'
+      apiKey: '',
+      authDomain: ''
     }
 
     firebase.initializeApp(firebaseConfig);
